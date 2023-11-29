@@ -10,13 +10,24 @@ class Devise {
   late String modeli;
   late String color;
   late int relaseyear;
+  late String operatingsystem;
+  Display? display;
+  Pocessor? pocessor;
+  Memory? memory;
+  Camera? camera;
+  Front? front;
+  Battery? battery;
+  Connectivity? connectivity;
+  OperatingSystem? operatingSystem;
+
 
   Devise({
     required this.name,
     required this.brend,
     required this.modeli,
     required this.color,
-    required this.relaseyear
+    required this.relaseyear,
+    required this.operatingsystem
   });
   Devise.fromJson(Map<String, dynamic> json){
     name = json["name"];
@@ -24,6 +35,7 @@ class Devise {
     modeli = json["modeli"];
     color = json["color"];
     relaseyear = json["relaseyear"];
+    operatingsystem = json["operatingsystem"];
 
   }
   Map<String, dynamic> toJson() => {
@@ -32,11 +44,12 @@ class Devise {
     "model" : modeli,
     "color" : color,
     "relaseyear" : relaseyear,
+    "operatingsystem" : operatingsystem,
   };
 
   @override
   String toString() {
-    return 'Devise{name: $name, brend: $brend, modeli: $modeli, color: $color, relaseyear: $relaseyear}';
+    return 'Devise{name: $name, brend: $brend, modeli: $modeli, color: $color, relaseyear: $relaseyear , operatingsystem :$operatingsystem}';
   }
 }
 class Display {
@@ -95,6 +108,11 @@ class Pocessor {
         "cores": cores,
         "clocspeed": clocspeed,
       };
+
+  @override
+  String toString() {
+    return 'Pocessor{manufacturer: $manufacturer, model: $model, cores: $cores, clocspeed: $clocspeed}';
+  }
 }
 class Memory{
   late String ram;
@@ -118,9 +136,103 @@ class Memory{
   "expandablestorage": expandablestorage,
   "maxexpandable": maxexpandable,
   };
+
+  @override
+  String toString() {
+    return 'Memory{ram: $ram, storge: $storge, expandablestorage: $expandablestorage, maxexpandable: $maxexpandable}';
+  }
 }
 class Camera {
   late String resolution;
   late String videocapability;
+  Camera(this.resolution, this.videocapability);
+  Camera.fromJson(Map<String, dynamic> json){
+    resolution = json["resolution"];
+    videocapability = json["videocapability"];
+  }
+  Map<String, dynamic> toJson() =>
+      {
+        "resolution": resolution,
+        "videocapability": videocapability,
+      };
+
+  @override
+  String toString() {
+    return 'Camera{resolution: $resolution, videocapability: $videocapability}';
+  }
+}
+class Front{
+  late String resolution;
+  late String videocapability;
+
+
+  Front(this.resolution, this.videocapability);
+
+  Front.fromJson(Map<String, dynamic> json){
+    resolution = json["resolution"];
+    videocapability = json["videocapability"];
+  }
+  Map<String, dynamic> toJson() =>
+      {
+        "resolution": resolution,
+        "videocapability": videocapability,
+      };
+
+  @override
+  String toString() {
+    return 'Front{resolution: $resolution, videocapability: $videocapability}';
+  }
+}
+class Battery{
+  late String capacity;
+  late String type;
+  late bool removable;
+
+  Battery(this.capacity, this.type, this.removable);
+  Battery.fromJson(Map<String, dynamic> json){
+    capacity = json["capacity"];
+    type = json["type"];
+    removable = json["removable"];
+
+
+  }
+  Map<String, dynamic> toJson() => {
+    "capacity": capacity,
+    "type" : type ,
+    "removable" : removable,
+  };
+
+  @override
+  String toString() {
+    return 'Battery{capacity: $capacity, type: $type, removable: $removable}';
+  }
+}
+class Connectivity{
+  late String network;
+  late String wifi;
+  late String bluetooh;
+  late List<String>prots;
+
+  Connectivity(this.network, this.wifi, this.bluetooh, this.prots);
+  Connectivity.fromJson(Map<String, dynamic> json){
+    network = json["network"];
+    wifi = json["wifi"];
+    bluetooh = json["bluetooh"];
+    prots = List<String>.from(json["prots"].map((x)=> x));
+  }
+  Map<String, dynamic> toJson() => {
+    "network": network,
+    "wifi" : wifi ,
+    "bluetooh" : bluetooh,
+    "prots" : List.from(prots.map((x) => x)),
+  };
+
+  @override
+  String toString() {
+    return 'Connectivity{network: $network, wifi: $wifi, bluetooh: $bluetooh, prots: $prots}';
+  }
+}
+class OperatingSystem{
 
 }
+
